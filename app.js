@@ -3,7 +3,7 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 
-const { categoriesRouter } = require("./routes");
+const { categoriesRouter, productsRouter } = require("./routes");
 
 const app = express();
 
@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/categories", categoriesRouter);
+app.use("/api/products", productsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
