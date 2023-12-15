@@ -1,6 +1,7 @@
-const { categoriesRouter, productsRouter } = require("./api");
+const { categoriesRouter, productsRouter, authRouter } = require("./api");
 
 module.exports = {
   categoriesRouter,
   productsRouter,
+  authRouter,
 };

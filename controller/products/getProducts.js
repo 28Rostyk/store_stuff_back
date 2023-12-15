@@ -32,8 +32,8 @@ const getProducts = async (req, res) => {
       products: products,
     });
   } catch (error) {
-    console.log("Error fetching categories:", error);
-    res.status(500).json({ message: "Error fetching categories" });
+    console.log("Error fetching products:", error);
+    res.status(500).json({ message: "Error fetching products" });
   }
 };
 
