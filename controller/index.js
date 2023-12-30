@@ -6,12 +6,7 @@ const {
   getProductById,
 } = require("./products");
 
-const {
-  login,
-  register,
-  getCurrent,
-  logout,
-} = require("./user/authController");
+const { login, register, getCurrent, logout, refreshToken } = require("./user");
 
 module.exports = {
   getCategories,
@@ -24,4 +19,5 @@ module.exports = {
   register,
   getCurrent,
   logout,
+  refreshToken,
 };

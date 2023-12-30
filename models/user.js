@@ -21,9 +21,13 @@ const userSchema = new Schema(
       matсh: emailRegexp,
       unique: true,
     },
-    token: {
+    accessToken: {
       type: String,
-      default: "",
+      default: null,
+    },
+    refreshToken: {
+      type: String,
+      default: null,
     },
     avatar: {
       type: String,
