@@ -6,7 +6,14 @@ const {
   getProductById,
 } = require("./products");
 
-const { login, register, getCurrent, logout, refreshToken } = require("./user");
+const {
+  login,
+  register,
+  getCurrent,
+  logout,
+  refreshToken,
+  googleAuth,
+} = require("./user");
 
 module.exports = {
   getCategories,
@@ -20,4 +27,5 @@ module.exports = {
   getCurrent,
   logout,
   refreshToken,
+  googleAuth,
 };

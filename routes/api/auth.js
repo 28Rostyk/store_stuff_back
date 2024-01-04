@@ -6,16 +6,28 @@ const {
   getCurrent,
   logout,
   refreshToken,
+  googleAuth,
 } = require("../../controller");
 
 const { validateBody } = require("../../utils");
 
-const { authenticate } = require("../../middlewares");
+const { authenticate, passport } = require("../../middlewares");
 
 const { schemas } = require("../../models");
 const { userValidation, refreshValidation } = require("../../shemas");
 
 const router = express.Router();
+
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { session: false }),
+  googleAuth
+);
 
 // signup
 router.post("/register", validateBody(schemas.registerSchema), register);
