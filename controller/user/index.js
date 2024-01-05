@@ -4,6 +4,7 @@ const { logout } = require("./logout");
 const { refreshToken } = require("./refreshToken");
 const { getCurrent } = require("./getCurrent");
 const { googleAuth } = require("./googleAuth");
+const { userUpdate } = require("./userUpdate");
 
 module.exports = {
   login,
@@ -12,4 +13,5 @@ module.exports = {
   refreshToken,
   getCurrent,
   googleAuth,
+  userUpdate,
 };

@@ -7,6 +7,7 @@ const {
   logout,
   refreshToken,
   googleAuth,
+  userUpdate,
 } = require("../../controller");
 
 const { validateBody } = require("../../utils");
@@ -45,6 +46,7 @@ router.get("/current", authenticate, getCurrent);
 
 router.post("/logout", authenticate, logout);
 router.post("/refresh", validateBody(refreshValidation), refreshToken);
+router.patch("/update/:id", authenticate, userUpdate);
 
 // router.patch("/", authenticate, userUpdateSubscription);
 

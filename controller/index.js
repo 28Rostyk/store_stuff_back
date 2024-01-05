@@ -13,6 +13,7 @@ const {
   logout,
   refreshToken,
   googleAuth,
+  userUpdate,
 } = require("./user");
 
 module.exports = {
@@ -28,4 +29,5 @@ module.exports = {
   logout,
   refreshToken,
   googleAuth,
+  userUpdate,
 };
