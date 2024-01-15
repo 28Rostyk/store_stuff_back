@@ -3,25 +3,28 @@ const { ctrlWrapper } = require("../../helpers");
 
 const getProducts = async (req, res) => {
   const {
+    search = "",
     page = 1,
     perPage = 10,
     sortBy = "createdAt",
-    sortOrder = "asc",
+    sortOrder = "desc",
   } = req.query;
 
   try {
     const skip = (page - 1) * perPage;
-
-    const totalCount = await Products.countDocuments();
-    const totalPages = Math.ceil(totalCount / perPage);
-
     const sortField = sortBy === "price" ? "price" : "createdAt";
     const sortDirection = sortOrder === "desc" ? -1 : 1;
     const sortOptions = { [sortField]: sortDirection };
 
-    const products = await Products.find({}, "-createdAt -updatedAt")
-      .sort(sortOptions)
+    const searchTerms = search.split(" ").map((term) => new RegExp(term, "i"));
+    const query = search ? { title: { $all: searchTerms } } : {};
+
+    const totalCount = await Products.countDocuments(query);
+    const totalPages = Math.ceil(totalCount / perPage);
+
+    const filteredData = await Products.find(query, "-createdAt -updatedAt")
       .skip(skip)
+      .sort(sortOptions)
       .limit(perPage);
 
     res.json({
@@ -29,7 +32,7 @@ const getProducts = async (req, res) => {
       totalItems: totalCount,
       perPage: perPage,
       currentPage: page,
-      products: products,
+      products: filteredData,
     });
   } catch (error) {
     console.log("Error fetching products:", error);
