@@ -32,6 +32,10 @@ const userSchema = new Schema(
     avatar: {
       type: String,
     },
+    favouriteProducts: {
+      type: Array,
+      default: [],
+    },
   },
   { versionKey: false, timestamps: true }
 );
