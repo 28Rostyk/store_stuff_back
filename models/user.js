@@ -36,6 +36,10 @@ const userSchema = new Schema(
       type: Array,
       default: [],
     },
+    basket: {
+      type: Array,
+      default: [],
+    },
   },
   { versionKey: false, timestamps: true }
 );
